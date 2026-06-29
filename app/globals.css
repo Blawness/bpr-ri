@@ -1,0 +1,71 @@
+@import "tailwindcss";
+@source "../../node_modules/@blawness/admin-kit";
+
+@theme {
+  /* Brand (Cyan/Blue) */
+  --color-brand-50: #e0fbfc;
+  --color-brand-100: #bcecf2;
+  --color-brand-200: #8ae0e9;
+  --color-brand-300: #4dd0df;
+  --color-brand-400: #1ebdd0;
+  --color-brand-500: #00b4d8;
+  --color-brand-600: #008fae;
+  --color-brand-700: #00738e;
+  --color-brand-800: #005f77;
+  --color-brand-900: #004e63;
+  --color-brand-950: #003344;
+
+  /* Navy */
+  --color-navy-50: #f0f4f8;
+  --color-navy-100: #d9e2ec;
+  --color-navy-200: #bcccdc;
+  --color-navy-300: #9fb3c8;
+  --color-navy-400: #829ab1;
+  --color-navy-500: #627d98;
+  --color-navy-600: #486581;
+  --color-navy-700: #334e68;
+  --color-navy-800: #243b53;
+  --color-navy-900: #102a43;
+  --color-navy-950: #0a192f;
+
+  /* Gold */
+  --color-gold-50: #fff9e6;
+  --color-gold-100: #ffefb3;
+  --color-gold-200: #ffe480;
+  --color-gold-300: #ffda4d;
+  --color-gold-400: #ffcf1a;
+  --color-gold-500: #ffd700;
+  --color-gold-600: #cca600;
+  --color-gold-700: #997c00;
+  --color-gold-800: #665300;
+  --color-gold-900: #332900;
+  --color-gold-950: #1a1400;
+}
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-lora);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
