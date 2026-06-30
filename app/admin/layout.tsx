@@ -1,8 +1,13 @@
 import React from "react";
 import { AdminLayout } from "@blawness/admin-kit/shell";
+import { requireUser } from "@blawness/admin-kit/auth-helpers";
 import { FileText, Users, ImageIcon } from "lucide-react";
+// Belt-and-suspenders RBAC registration for page renders; instrumentation.ts
+// covers server actions on cold start.
+import "../../rbac";
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default async function Layout({ children }: { children: React.ReactNode }) {
+  await requireUser();
   return (
     <AdminLayout
       brandName="BPR-RI"

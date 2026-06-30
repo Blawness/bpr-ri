@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@blawness/admin-kit':
-        specifier: git+https://github.com/Blawness/admin-kit.git#v0.8.0
-        version: https://codeload.github.com/Blawness/admin-kit/tar.gz/e2c1d58990f36b54bfeb5646152ce90226a6575a(@floating-ui/dom@1.7.6)(@tiptap/core@3.27.1(@tiptap/pm@3.27.1))(@types/pg@8.20.0)(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(next@16.2.9(@babel/core@7.29.7)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(pg@8.22.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(tailwindcss@4.3.1)
+        specifier: git+https://github.com/Blawness/admin-kit.git#v0.9.0
+        version: https://codeload.github.com/Blawness/admin-kit/tar.gz/09dd6ba88c3ffebfd22820edbb3e3388ff8ab517(@floating-ui/dom@1.7.6)(@tiptap/core@3.27.1(@tiptap/pm@3.27.1))(@types/pg@8.20.0)(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(next@16.2.9(@babel/core@7.29.7)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(pg@8.22.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(tailwindcss@4.3.1)
       drizzle-orm:
         specifier: ^0.45.2
         version: 0.45.2(@types/pg@8.20.0)(pg@8.22.0)(postgres@3.4.9)
@@ -51,6 +51,9 @@ importers:
       '@types/react-dom':
         specifier: ^19
         version: 19.2.3(@types/react@19.2.17)
+      bcryptjs:
+        specifier: ^3.0.3
+        version: 3.0.3
       dotenv:
         specifier: ^17.4.2
         version: 17.4.2
@@ -294,14 +297,18 @@ packages:
       '@types/react':
         optional: true
 
-  '@blawness/admin-kit@https://codeload.github.com/Blawness/admin-kit/tar.gz/e2c1d58990f36b54bfeb5646152ce90226a6575a':
-    resolution: {tarball: https://codeload.github.com/Blawness/admin-kit/tar.gz/e2c1d58990f36b54bfeb5646152ce90226a6575a}
-    version: 0.8.0
+  '@blawness/admin-kit@https://codeload.github.com/Blawness/admin-kit/tar.gz/09dd6ba88c3ffebfd22820edbb3e3388ff8ab517':
+    resolution: {tarball: https://codeload.github.com/Blawness/admin-kit/tar.gz/09dd6ba88c3ffebfd22820edbb3e3388ff8ab517}
+    version: 0.9.0
     peerDependencies:
       next: ^16.2.0
       react: ^19.2.0
       react-dom: ^19.2.0
       tailwindcss: ^4
+      uploadthing: ^7.7.0
+    peerDependenciesMeta:
+      uploadthing:
+        optional: true
 
   '@drizzle-team/brocli@0.10.2':
     resolution: {integrity: sha512-z33Il7l5dKjUgGULTqBsQBQwckHh5AbIuxhdsIxDDiZAzBOrZO6q9ogcWC65kU382AfynTfgNumVcNIjuIua6w==}
@@ -3753,7 +3760,7 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.2.17
 
-  '@blawness/admin-kit@https://codeload.github.com/Blawness/admin-kit/tar.gz/e2c1d58990f36b54bfeb5646152ce90226a6575a(@floating-ui/dom@1.7.6)(@tiptap/core@3.27.1(@tiptap/pm@3.27.1))(@types/pg@8.20.0)(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(next@16.2.9(@babel/core@7.29.7)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(pg@8.22.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(tailwindcss@4.3.1)':
+  '@blawness/admin-kit@https://codeload.github.com/Blawness/admin-kit/tar.gz/09dd6ba88c3ffebfd22820edbb3e3388ff8ab517(@floating-ui/dom@1.7.6)(@tiptap/core@3.27.1(@tiptap/pm@3.27.1))(@types/pg@8.20.0)(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(next@16.2.9(@babel/core@7.29.7)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(pg@8.22.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(tailwindcss@4.3.1)':
     dependencies:
       '@aws-sdk/client-s3': 3.1075.0
       '@base-ui/react': 1.6.0(@types/react@19.2.17)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
