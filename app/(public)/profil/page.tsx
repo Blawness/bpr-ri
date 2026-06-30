@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -5,6 +6,21 @@ export const metadata = {
   title: "Profil",
   description:
     "Profil, sejarah, dan landasan hukum Badan Pusat Reklasseering Republik Indonesia (BPR-RI).",
+};
+
+const profilKetua = {
+  nama: "Harun Prayitno, S.E., S.H., M.H",
+  jabatan: "Kepala BPR-RI",
+  foto: "/profil/harun-prayitno-peci.webp",
+  quote:
+    "Reklasseering adalah ikhtiar memanusiakan kembali mereka yang pernah tersandung hukum. Bersama Negara dan masyarakat, kami hadir untuk membela kebenaran, menegakkan keadilan, dan membuka jalan pulih bagi setiap warga.",
+  visi: "Menjadi lembaga reklasseering yang terpercaya, profesional, dan berintegritas dalam mendampingi penegakan hukum serta pembinaan narapidana dan ex-narapidana demi terwujudnya masyarakat yang adil dan beradab.",
+  misi: [
+    "Memberikan pendampingan dan bantuan hukum bagi masyarakat di dalam maupun di luar pengadilan.",
+    "Melaksanakan pembinaan, pengawasan, dan perbaikan akhlak narapidana serta ex-narapidana.",
+    "Mendukung reintegrasi sosial agar setiap warga binaan dapat kembali berdaya di tengah masyarakat.",
+    "Menjadi mitra kerja Pemerintah Republik Indonesia dalam pelaksanaan pekerjaan negara.",
+  ],
 };
 
 const dasarHukum = [
@@ -125,6 +141,91 @@ export default function ProfilPage() {
             <p className="mt-8 text-gold-400 font-semibold tracking-wide uppercase text-sm">
               BPR-RI Untuk Negara &amp; Masyarakat
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Profil Ketua */}
+      <section className="relative overflow-hidden py-20 bg-white">
+        {/* Backdrop penghormatan: Soekarno sebagai tokoh pendiri */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-y-0 right-0 z-0 w-1/2 max-w-2xl select-none"
+        >
+          <Image
+            src="/profil/soekarno-transparent.webp"
+            alt=""
+            fill
+            sizes="50vw"
+            className="object-contain object-right-bottom opacity-25 [mask-image:linear-gradient(to_left,black_60%,transparent)]"
+          />
+        </div>
+
+        <div className="container relative z-10 mx-auto px-4 max-w-6xl">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+            {/* Kolom Kiri — Visual */}
+            <div className="lg:col-span-5">
+              <div className="relative mx-auto max-w-sm lg:max-w-none">
+                <div className="absolute -top-4 -left-4 w-24 h-24 bg-brand-50 rounded-2xl -z-10"></div>
+                <div className="absolute -bottom-4 -right-4 w-28 h-28 bg-gold-50 rounded-2xl -z-10"></div>
+                <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-xl shadow-navy-900/10 ring-1 ring-neutral-100 bg-neutral-100">
+                  <Image
+                    src={profilKetua.foto}
+                    alt={`Foto ${profilKetua.nama}`}
+                    fill
+                    sizes="(max-width: 1024px) 24rem, 40vw"
+                    className="object-cover object-center"
+                    priority
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Kolom Kanan — Konten */}
+            <div className="lg:col-span-7">
+              <div className="inline-block px-4 py-1.5 bg-brand-50 text-brand-700 rounded-full text-sm font-semibold tracking-wider uppercase mb-4 border border-brand-100">
+                Profil Pimpinan
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-navy-900 leading-tight">
+                {profilKetua.nama}
+              </h2>
+              <p className="mt-2 text-brand-600 font-semibold tracking-wide uppercase text-sm">
+                {profilKetua.jabatan}
+              </p>
+
+              <blockquote className="relative mt-6 pl-6 border-l-4 border-gold-400">
+                <span className="absolute -top-3 left-3 text-5xl leading-none text-brand-100 font-serif select-none">
+                  &ldquo;
+                </span>
+                <p className="italic text-lg text-neutral-700 leading-relaxed">
+                  {profilKetua.quote}
+                </p>
+              </blockquote>
+
+              <div className="mt-8 grid grid-cols-1 gap-5">
+                <div className="bg-neutral-50 rounded-2xl border border-neutral-100 p-6">
+                  <h3 className="text-xs font-bold tracking-wider uppercase text-brand-600 mb-2">
+                    Visi
+                  </h3>
+                  <p className="text-neutral-700 leading-relaxed">{profilKetua.visi}</p>
+                </div>
+                <div className="bg-neutral-50 rounded-2xl border border-neutral-100 p-6">
+                  <h3 className="text-xs font-bold tracking-wider uppercase text-brand-600 mb-3">
+                    Misi
+                  </h3>
+                  <ul className="space-y-3">
+                    {profilKetua.misi.map((m, i) => (
+                      <li key={i} className="flex items-start gap-3">
+                        <span className="flex-shrink-0 w-6 h-6 rounded-lg bg-brand-600 text-white text-xs font-bold flex items-center justify-center mt-0.5">
+                          {i + 1}
+                        </span>
+                        <span className="text-neutral-700 leading-relaxed">{m}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
