@@ -10,7 +10,7 @@ export default function ContactPage() {
     subject: "",
     message: "",
   });
-  
+
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -46,214 +46,223 @@ export default function ContactPage() {
     }
   };
 
+  const inputClass =
+    "w-full px-5 py-3.5 bg-neutral-50 border border-neutral-200 rounded-2xl focus:ring-2 focus:ring-brand-500/40 focus:border-brand-500 outline-none transition-all placeholder:text-neutral-400 text-navy-900";
+
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 py-20 px-4 sm:px-6 lg:px-8 font-sans selection:bg-blue-500/30">
-      <div className="max-w-7xl mx-auto">
-        
-        {/* Header Section */}
-        <div className="text-center mb-16 space-y-4">
-          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">
-            Hubungi Kami
-          </h1>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            Punya pertanyaan, masukan, atau perlu bantuan? Tim kami siap mendengarkan dan membantu Anda. Silakan isi formulir di bawah ini atau hubungi kami melalui kontak yang tersedia.
-          </p>
+    <div className="flex flex-col">
+      {/* Hero */}
+      <section className="relative overflow-hidden bg-navy-950 text-white py-20 lg:py-28">
+        <div className="absolute inset-0 bg-gradient-to-br from-brand-900/40 to-navy-950/90 z-0"></div>
+        <div className="absolute top-0 right-0 -translate-y-12 translate-x-1/3 w-96 h-96 bg-brand-500/20 rounded-full blur-3xl"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-3xl">
+            <div className="inline-block px-4 py-1.5 bg-white/10 text-gold-300 rounded-full text-sm font-semibold tracking-wider uppercase mb-6 border border-white/20">
+              Layanan Kontak
+            </div>
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight mb-6 leading-tight">
+              Hubungi Kami
+            </h1>
+            <p className="text-lg text-neutral-300 leading-relaxed">
+              Punya pertanyaan, masukan, atau perlu bantuan? Tim kami siap mendengarkan. Isi formulir
+              di bawah atau hubungi kami melalui kontak yang tersedia.
+            </p>
+          </div>
         </div>
+      </section>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start">
-          
-          {/* Contact Info Sidebar */}
-          <div className="lg:col-span-4 space-y-8">
-            <div className="bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-xl shadow-gray-200/50 dark:shadow-none border border-gray-100 dark:border-gray-700/50 backdrop-blur-xl">
-              <h3 className="text-2xl font-bold mb-6 flex items-center gap-2">
-                Informasi Kontak
-              </h3>
-              
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="bg-blue-100 dark:bg-blue-900/30 p-3 rounded-2xl text-blue-600 dark:text-blue-400 shrink-0">
-                    <MapPin className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900 dark:text-white">Alamat Kantor</h4>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1 leading-relaxed">
-                      Gedung Yayasan Purna Bakti (YARNATI) <br />
-                      Lt. 4 Ruang 407&ndash;408 <br />
-                      Jl. Proklamasi No. 44 <br />
-                      Pegangsaan, Menteng <br />
-                      Jakarta Pusat 10320
-                    </p>
-                  </div>
-                </div>
+      {/* Content */}
+      <section className="py-20 bg-neutral-50">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start">
+            {/* Contact Info Sidebar */}
+            <div className="lg:col-span-4 space-y-8">
+              <div className="bg-white rounded-2xl p-8 shadow-sm border border-neutral-100">
+                <h3 className="text-2xl font-bold text-navy-900 mb-6">Informasi Kontak</h3>
 
-                <div className="flex items-start gap-4">
-                  <div className="bg-emerald-100 dark:bg-emerald-900/30 p-3 rounded-2xl text-emerald-600 dark:text-emerald-400 shrink-0">
-                    <Phone className="w-6 h-6" />
+                <div className="space-y-6">
+                  <div className="flex items-start gap-4">
+                    <div className="bg-brand-50 p-3 rounded-2xl text-brand-600 border border-brand-100 shrink-0">
+                      <MapPin className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-navy-900">Alamat Kantor</h4>
+                      <p className="text-sm text-neutral-600 mt-1 leading-relaxed">
+                        Gedung Yayasan Purna Bakti (YARNATI) <br />
+                        Lt. 4 Ruang 407&ndash;408 <br />
+                        Jl. Proklamasi No. 44 <br />
+                        Pegangsaan, Menteng <br />
+                        Jakarta Pusat 10320
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900 dark:text-white">Telepon</h4>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                      (021) 2554 9000
-                    </p>
-                  </div>
-                </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="bg-purple-100 dark:bg-purple-900/30 p-3 rounded-2xl text-purple-600 dark:text-purple-400 shrink-0">
-                    <Mail className="w-6 h-6" />
+                  <div className="flex items-start gap-4">
+                    <div className="bg-navy-50 p-3 rounded-2xl text-navy-700 border border-navy-100 shrink-0">
+                      <Phone className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-navy-900">Telepon</h4>
+                      <p className="text-sm text-neutral-600 mt-1">021-392-8018</p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900 dark:text-white">Email</h4>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                      humas@bprri.or.id
-                    </p>
-                  </div>
-                </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="bg-amber-100 dark:bg-amber-900/30 p-3 rounded-2xl text-amber-600 dark:text-amber-400 shrink-0">
-                    <Clock className="w-6 h-6" />
+                  <div className="flex items-start gap-4">
+                    <div className="bg-gold-50 p-3 rounded-2xl text-gold-600 border border-gold-100 shrink-0">
+                      <Mail className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-navy-900">Email</h4>
+                      <p className="text-sm text-neutral-600 mt-1">ketua@dpd-bprri-007.com</p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900 dark:text-white">Jam Operasional</h4>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                      Senin - Jumat: 08.00 - 16.00 WIB <br />
-                      Sabtu, Minggu & Hari Libur: Tutup
-                    </p>
+
+                  <div className="flex items-start gap-4">
+                    <div className="bg-brand-50 p-3 rounded-2xl text-brand-600 border border-brand-100 shrink-0">
+                      <Clock className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-navy-900">Jam Operasional</h4>
+                      <p className="text-sm text-neutral-600 mt-1">
+                        Senin - Jumat: 08.00 - 16.00 WIB <br />
+                        Sabtu, Minggu &amp; Hari Libur: Tutup
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            
-            {/* Decorative Element */}
-            <div className="hidden lg:block relative h-48 rounded-3xl overflow-hidden bg-gradient-to-br from-blue-600 to-indigo-700 shadow-lg">
-               <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] mix-blend-overlay"></div>
-               <div className="absolute inset-0 flex flex-col justify-center p-8">
-                 <p className="text-white font-medium text-lg mb-2">Transparan & Akuntabel</p>
-                 <p className="text-blue-100 text-sm opacity-90">Kami senantiasa berupaya memberikan layanan informasi terbaik untuk masyarakat.</p>
-               </div>
-            </div>
-          </div>
 
-          {/* Form Section */}
-          <div className="lg:col-span-8">
-            <div className="bg-white dark:bg-gray-800 rounded-3xl p-8 sm:p-10 shadow-xl shadow-gray-200/50 dark:shadow-none border border-gray-100 dark:border-gray-700/50 relative overflow-hidden">
-              
-              {/* Status Overlays */}
-              {status === "success" && (
-                <div className="absolute inset-0 bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm z-10 flex flex-col items-center justify-center p-8 text-center transition-all duration-300">
-                  <div className="w-20 h-20 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mb-6 text-green-600 dark:text-green-400 animate-bounce">
-                    <CheckCircle className="w-10 h-10" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Pesan Terkirim!</h3>
-                  <p className="text-gray-600 dark:text-gray-400 mb-8 max-w-md">
-                    Terima kasih telah menghubungi kami. Pesan Anda telah kami terima dan akan segera kami tindaklanjuti.
+              {/* Decorative Element */}
+              <div className="hidden lg:block relative h-48 rounded-2xl overflow-hidden bg-gradient-to-br from-brand-900 to-navy-950 shadow-sm">
+                <div className="absolute bottom-0 right-0 translate-y-1/3 translate-x-1/4 w-48 h-48 bg-gold-500/10 rounded-full blur-2xl"></div>
+                <div className="absolute inset-0 flex flex-col justify-center p-8">
+                  <p className="text-white font-semibold text-lg mb-2">Transparan &amp; Akuntabel</p>
+                  <p className="text-neutral-300 text-sm">
+                    Kami senantiasa berupaya memberikan layanan informasi terbaik untuk masyarakat.
                   </p>
-                  <button 
-                    onClick={() => setStatus("idle")}
-                    className="px-6 py-3 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-900 dark:text-white rounded-xl font-medium transition-colors"
-                  >
-                    Kirim Pesan Lain
-                  </button>
                 </div>
-              )}
+              </div>
+            </div>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
-                
-                {status === "error" && (
-                  <div className="p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800/50 rounded-2xl flex items-start gap-3 text-red-600 dark:text-red-400">
-                    <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" />
-                    <p className="text-sm font-medium">{errorMessage}</p>
+            {/* Form Section */}
+            <div className="lg:col-span-8">
+              <div className="bg-white rounded-2xl p-8 sm:p-10 shadow-sm border border-neutral-100 relative overflow-hidden">
+                {/* Status Overlays */}
+                {status === "success" && (
+                  <div className="absolute inset-0 bg-white/95 backdrop-blur-sm z-10 flex flex-col items-center justify-center p-8 text-center transition-all duration-300">
+                    <div className="w-20 h-20 bg-brand-50 border border-brand-100 rounded-full flex items-center justify-center mb-6 text-brand-600 animate-bounce">
+                      <CheckCircle className="w-10 h-10" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-navy-900 mb-2">Pesan Terkirim!</h3>
+                    <p className="text-neutral-600 mb-8 max-w-md">
+                      Terima kasih telah menghubungi kami. Pesan Anda telah kami terima dan akan
+                      segera kami tindaklanjuti.
+                    </p>
+                    <button
+                      onClick={() => setStatus("idle")}
+                      className="px-6 py-3 bg-neutral-100 hover:bg-neutral-200 text-navy-900 rounded-xl font-medium transition-colors"
+                    >
+                      Kirim Pesan Lain
+                    </button>
                   </div>
                 )}
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  {status === "error" && (
+                    <div className="p-4 bg-red-50 border border-red-200 rounded-2xl flex items-start gap-3 text-red-600">
+                      <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" />
+                      <p className="text-sm font-medium">{errorMessage}</p>
+                    </div>
+                  )}
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <label htmlFor="name" className="text-sm font-semibold text-neutral-700 ml-1">
+                        Nama Lengkap <span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        required
+                        value={formData.name}
+                        onChange={handleChange}
+                        placeholder="John Doe"
+                        className={inputClass}
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <label htmlFor="email" className="text-sm font-semibold text-neutral-700 ml-1">
+                        Alamat Email <span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        required
+                        value={formData.email}
+                        onChange={handleChange}
+                        placeholder="john@example.com"
+                        className={inputClass}
+                      />
+                    </div>
+                  </div>
+
                   <div className="space-y-2">
-                    <label htmlFor="name" className="text-sm font-semibold text-gray-700 dark:text-gray-300 ml-1">
-                      Nama Lengkap <span className="text-red-500">*</span>
+                    <label htmlFor="subject" className="text-sm font-semibold text-neutral-700 ml-1">
+                      Subjek <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
-                      id="name"
-                      name="name"
+                      id="subject"
+                      name="subject"
                       required
-                      value={formData.name}
+                      value={formData.subject}
                       onChange={handleChange}
-                      placeholder="John Doe"
-                      className="w-full px-5 py-3.5 bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-700 rounded-2xl focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 outline-none transition-all placeholder:text-gray-400 dark:placeholder:text-gray-600 text-gray-900 dark:text-white"
+                      placeholder="Pertanyaan seputar..."
+                      className={inputClass}
                     />
                   </div>
+
                   <div className="space-y-2">
-                    <label htmlFor="email" className="text-sm font-semibold text-gray-700 dark:text-gray-300 ml-1">
-                      Alamat Email <span className="text-red-500">*</span>
+                    <label htmlFor="message" className="text-sm font-semibold text-neutral-700 ml-1">
+                      Pesan <span className="text-red-500">*</span>
                     </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
+                    <textarea
+                      id="message"
+                      name="message"
                       required
-                      value={formData.email}
+                      rows={5}
+                      value={formData.message}
                       onChange={handleChange}
-                      placeholder="john@example.com"
-                      className="w-full px-5 py-3.5 bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-700 rounded-2xl focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 outline-none transition-all placeholder:text-gray-400 dark:placeholder:text-gray-600 text-gray-900 dark:text-white"
-                    />
+                      placeholder="Tuliskan pesan Anda di sini secara detail..."
+                      className={`${inputClass} resize-y`}
+                    ></textarea>
                   </div>
-                </div>
 
-                <div className="space-y-2">
-                  <label htmlFor="subject" className="text-sm font-semibold text-gray-700 dark:text-gray-300 ml-1">
-                    Subjek <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    id="subject"
-                    name="subject"
-                    required
-                    value={formData.subject}
-                    onChange={handleChange}
-                    placeholder="Pertanyaan seputar..."
-                    className="w-full px-5 py-3.5 bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-700 rounded-2xl focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 outline-none transition-all placeholder:text-gray-400 dark:placeholder:text-gray-600 text-gray-900 dark:text-white"
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <label htmlFor="message" className="text-sm font-semibold text-gray-700 dark:text-gray-300 ml-1">
-                    Pesan <span className="text-red-500">*</span>
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    required
-                    rows={5}
-                    value={formData.message}
-                    onChange={handleChange}
-                    placeholder="Tuliskan pesan Anda di sini secara detail..."
-                    className="w-full px-5 py-3.5 bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-700 rounded-2xl focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 outline-none transition-all placeholder:text-gray-400 dark:placeholder:text-gray-600 text-gray-900 dark:text-white resize-y"
-                  ></textarea>
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={status === "loading"}
-                  className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold rounded-2xl shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 transform hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center gap-2 disabled:opacity-70 disabled:pointer-events-none disabled:transform-none"
-                >
-                  {status === "loading" ? (
-                    <>
-                      <Loader2 className="w-5 h-5 animate-spin" />
-                      Mengirim...
-                    </>
-                  ) : (
-                    <>
-                      Kirim Pesan
-                      <Send className="w-5 h-5 ml-1" />
-                    </>
-                  )}
-                </button>
-              </form>
+                  <button
+                    type="submit"
+                    disabled={status === "loading"}
+                    className="w-full sm:w-auto px-8 py-4 bg-brand-600 hover:bg-brand-500 text-white font-semibold rounded-2xl shadow-lg shadow-brand-600/30 transform hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center gap-2 disabled:opacity-70 disabled:pointer-events-none disabled:transform-none"
+                  >
+                    {status === "loading" ? (
+                      <>
+                        <Loader2 className="w-5 h-5 animate-spin" />
+                        Mengirim...
+                      </>
+                    ) : (
+                      <>
+                        Kirim Pesan
+                        <Send className="w-5 h-5 ml-1" />
+                      </>
+                    )}
+                  </button>
+                </form>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 }

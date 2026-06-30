@@ -298,7 +298,7 @@ R2_ENDPOINT=
 
 # Email (Resend) — form kontak custom
 RESEND_API_KEY=
-CONTACT_EMAIL_TO=admin@bprri.or.id
+CONTACT_EMAIL_TO=ketua@dpd-bprri-007.com
 
 # Site config
 NEXT_PUBLIC_SITE_URL=https://bprri.or.id

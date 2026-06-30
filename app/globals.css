@@ -69,3 +69,11 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/*
+ * The public portal is forced to 90% (like browser zoom 90%) via an inline
+ * `style={{ zoom: 0.9 }}` on the .site-scale wrapper in app/(public)/layout.tsx.
+ * It must live inline because Lightning CSS (Tailwind v4) strips the non-standard
+ * `zoom` property from stylesheet rules. Adjust the value there (1 = 100%).
+ * `zoom` reflows (unlike transform) so there's no blur and sticky still works.
+ */

@@ -57,7 +57,7 @@ export async function POST(req: Request) {
     if (resend) {
       await resend.emails.send({
         from: 'Contact Form <onboarding@resend.dev>',
-        to: ['admin@bprri.or.id'], // Or any configured receiver
+        to: ['ketua@dpd-bprri-007.com'], // Or any configured receiver
         subject: `Pesan Baru: ${subject}`,
         html: `
           <h3>Pesan Baru dari Form Kontak BPR-RI</h3>

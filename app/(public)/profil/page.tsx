@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from "react";
 
 export const metadata = {
-  title: "Profil | BPR-RI",
+  title: "Profil",
   description:
     "Profil, sejarah, dan landasan hukum Badan Pusat Reklasseering Republik Indonesia (BPR-RI).",
 };

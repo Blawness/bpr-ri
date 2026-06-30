@@ -19,11 +19,26 @@ const lora = Lora({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
   title: {
-    default: "BPR-RI | Badan Pusat Reklasseering RI",
-    template: "%s | BPR-RI",
+    default: "DPD Tk.I DKI Jakarta — BPR-RI",
+    template: "%s | DPD DKI Jakarta — BPR-RI",
   },
   description: "Badan Pusat Reklasseering RI (BPR-RI) — portal informasi publik",
+  openGraph: {
+    title: "Dewan Perwakilan Daerah Tk.I DKI Jakarta",
+    description:
+      "Dewan Perwakilan Daerah Tingkat I DKI Jakarta — menaungi Badan Pusat Reklasseering Republik Indonesia (BPR-RI). Portal informasi publik.",
+    siteName: "DPD Tk.I DKI Jakarta",
+    locale: "id_ID",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Dewan Perwakilan Daerah Tk.I DKI Jakarta",
+    description:
+      "Menaungi Badan Pusat Reklasseering Republik Indonesia (BPR-RI). Portal informasi publik.",
+  },
 };
 
 export default function RootLayout({
