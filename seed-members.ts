@@ -98,7 +98,11 @@ async function main() {
       { pos: "Seksi Pendidikan & Pelatihan", name: "M. NAWAWI RAHMAT NUBUAT", slug: "m-nawawi-rahmat-nubuat" },
       { pos: "Seksi Perlindungan Perempuan & Anak", name: "VELIA DWI YULIANTI, S.E.", slug: "velia-dwi-yulianti" },
       { pos: "Seksi Pengawasan Kantor & Lingkungan", name: "FIRDAUS AGLIS AKBAR, S.H.", slug: "firdaus-aglis-akbar" },
-      { pos: "Seksi Usaha-usaha Keluar", name: "M. FAIZAL AMRI, S.HI., dkk", slug: "m-faizal-amri" },
+      { pos: "Seksi Usaha-usaha Keluar", name: "M. FAIZAL AMRI, S.H.I.", slug: "m-faizal-amri" },
+      { pos: "Seksi Usaha-usaha Keluar", name: "ARDI ERFINDO WAEL", slug: "ardi-erfindo-wael" },
+      { pos: "Seksi Usaha-usaha Keluar", name: "NAJIB PAYUDIN", slug: "najib-payudin" },
+      { pos: "Seksi Usaha-usaha Keluar", name: "AHMAD AJI SUSILO", slug: "ahmad-aji-susilo" },
+      { pos: "Seksi Usaha-usaha Keluar", name: "NURUL HUDA", slug: "nurul-huda" },
     ].map((item, idx) => ({
       id: crypto.randomUUID(),
       name: item.name,
@@ -112,7 +116,21 @@ async function main() {
   ];
 
   for (const row of data) {
-    await db.insert(members).values(row).onConflictDoNothing();
+    await db
+      .insert(members)
+      .values(row)
+      .onConflictDoUpdate({
+        target: members.slug,
+        set: {
+          name: row.name,
+          position: row.position,
+          division: row.division,
+          level: row.level,
+          parentId: row.parentId,
+          sortOrder: row.sortOrder,
+          updatedAt: new Date(),
+        },
+      });
   }
 
   console.log("Seeding complete!");
