@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@source "../../node_modules/@blawness/admin-kit";
+@source "../node_modules/@blawness/admin-kit/src/**/*.{tsx,ts}";
 
 @theme {
   /* Brand (Cyan/Blue) */
@@ -57,13 +57,7 @@
   --font-serif: var(--font-lora);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* Admin + public UI are light-only; no OS dark-mode override (removed). */
 body {
   background: var(--background);
   color: var(--foreground);
