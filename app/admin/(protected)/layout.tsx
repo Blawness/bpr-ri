@@ -2,7 +2,7 @@ import React from "react";
 import { AdminLayout } from "@blawness/admin-kit/shell";
 import type { NavItem } from "@blawness/admin-kit/shell/sidebar";
 import { requireUser } from "@blawness/admin-kit/auth-helpers";
-import { LayoutDashboard, FolderOpen, Newspaper, Images, Settings, Users } from "lucide-react";
+import { LayoutDashboard, FolderOpen, Newspaper, Images, Settings, Users, ScrollText } from "lucide-react";
 // Belt-and-suspenders RBAC registration for page renders; instrumentation.ts
 // covers server actions on cold start.
 import "../../../rbac";
@@ -25,6 +25,7 @@ const navItems: NavItem[] = [
     icon: <Settings className="h-4 w-4" />,
     children: [
       { href: "/admin/users", label: "Pengguna", icon: <Users className="h-4 w-4" />, requires: "users.read" },
+      { href: "/admin/activity", label: "Log Aktivitas", icon: <ScrollText className="h-4 w-4" />, requires: "users.read" },
     ],
   },
 ];
