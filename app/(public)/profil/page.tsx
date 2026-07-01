@@ -117,6 +117,18 @@ export default function ProfilPage() {
       {/* Hero */}
       <section className="relative overflow-hidden bg-navy-950 text-white py-20 lg:py-28">
         <div className="absolute inset-0 bg-gradient-to-br from-brand-900/40 to-navy-950/90 z-0"></div>
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center select-none"
+        >
+          <Image
+            src="/profil/icj-seal.svg"
+            alt=""
+            width={231}
+            height={231}
+            className="w-3/4 max-w-md object-contain opacity-[0.07]"
+          />
+        </div>
         <div className="absolute top-0 right-0 -translate-y-12 translate-x-1/3 w-96 h-96 bg-brand-500/20 rounded-full blur-3xl"></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl">
@@ -150,14 +162,14 @@ export default function ProfilPage() {
         {/* Backdrop penghormatan: Soekarno sebagai tokoh pendiri */}
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-y-0 right-0 z-0 w-1/2 max-w-2xl select-none"
+          className="pointer-events-none absolute inset-y-0 right-0 z-0 w-full md:w-1/2 max-w-2xl select-none"
         >
           <Image
             src="/profil/soekarno-transparent.webp"
             alt=""
             fill
-            sizes="50vw"
-            className="object-contain object-right-bottom opacity-25 [mask-image:linear-gradient(to_left,black_60%,transparent)]"
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="object-contain object-[center_70%] md:object-right-bottom opacity-25 [mask-image:linear-gradient(to_left,black_60%,transparent)]"
           />
         </div>
 
