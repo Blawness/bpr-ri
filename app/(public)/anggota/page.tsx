@@ -4,10 +4,13 @@ import { eq, asc } from "drizzle-orm";
 import { cacheTag } from "next/cache";
 import Link from "next/link";
 import Image from "next/image";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { breadcrumbSchema } from "@/lib/seo/schema";
 
 export const metadata = {
   title: "Anggota",
   description: "Daftar anggota BPR-RI",
+  alternates: { canonical: "/anggota" },
 };
 
 async function getMembers() {
@@ -25,6 +28,10 @@ export default async function AnggotaPage() {
 
   return (
     <div className="flex flex-col">
+      <JsonLd data={breadcrumbSchema([
+        { name: "Beranda", path: "/" },
+        { name: "Anggota", path: "/anggota" },
+      ])} />
       {/* Hero */}
       <section className="relative overflow-hidden bg-navy-950 text-white py-20 lg:py-28">
         <div className="absolute inset-0 bg-gradient-to-br from-brand-900/40 to-navy-950/90 z-0"></div>

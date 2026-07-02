@@ -4,10 +4,13 @@ import { eq, asc } from "drizzle-orm";
 import { cacheTag } from "next/cache";
 import Link from "next/link";
 import Image from "next/image";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { breadcrumbSchema } from "@/lib/seo/schema";
 
 export const metadata = {
   title: "Struktur Organisasi",
   description: "Struktur organisasi BPR-RI",
+  alternates: { canonical: "/struktur-organisasi" },
 };
 
 type Member = typeof members.$inferSelect;
@@ -119,6 +122,10 @@ export default async function StrukturOrganisasiPage() {
 
   return (
     <div className="flex flex-col">
+      <JsonLd data={breadcrumbSchema([
+        { name: "Beranda", path: "/" },
+        { name: "Struktur Organisasi", path: "/struktur-organisasi" },
+      ])} />
       {/* Hero */}
       <section className="relative overflow-hidden bg-navy-950 text-white py-20 lg:py-28">
         <div className="absolute inset-0 bg-gradient-to-br from-brand-900/40 to-navy-950/90 z-0"></div>

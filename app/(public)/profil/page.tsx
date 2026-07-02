@@ -1,11 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { breadcrumbSchema } from "@/lib/seo/schema";
 
 export const metadata = {
   title: "Profil",
   description:
     "Profil, sejarah, dan landasan hukum Badan Pusat Reklasseering Republik Indonesia (BPR-RI).",
+  alternates: { canonical: "/profil" },
 };
 
 const profilKetua = {
@@ -114,6 +117,10 @@ function SectionHeading({ eyebrow, title }: { eyebrow: string; title: string }) 
 export default function ProfilPage() {
   return (
     <div className="flex flex-col">
+      <JsonLd data={breadcrumbSchema([
+        { name: "Beranda", path: "/" },
+        { name: "Profil", path: "/profil" },
+      ])} />
       {/* Hero */}
       <section className="relative overflow-hidden bg-navy-950 text-white py-20 lg:py-28">
         <div className="absolute inset-0 bg-gradient-to-br from-brand-900/40 to-navy-950/90 z-0"></div>

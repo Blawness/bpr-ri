@@ -1,12 +1,22 @@
 import { getPublishedArticles } from "@blawness/admin-kit/public";
 import Link from "next/link";
 import Image from "next/image";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { breadcrumbSchema } from "@/lib/seo/schema";
+
+export const metadata = {
+  alternates: { canonical: "/berita" },
+};
 
 export default async function BeritaPage() {
   const posts = await getPublishedArticles({ limit: 12 });
 
   return (
     <div className="min-h-screen bg-neutral-50 py-16">
+      <JsonLd data={breadcrumbSchema([
+        { name: "Beranda", path: "/" },
+        { name: "Berita", path: "/berita" },
+      ])} />
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-extrabold text-navy-900 tracking-tight mb-4">

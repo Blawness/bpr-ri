@@ -6,6 +6,7 @@ export const metadata = {
     title: "Beranda",
     description:
         "Dewan Perwakilan Daerah Tingkat I DKI Jakarta — menaungi Badan Pusat Reklasseering Republik Indonesia (BPR-RI). Portal informasi publik.",
+    alternates: { canonical: "/" },
 };
 
 export default function HomePage() {
