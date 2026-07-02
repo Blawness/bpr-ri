@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Lora } from "next/font/google";
 import "./globals.css";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { organizationSchema, websiteSchema } from "@/lib/seo/schema";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,6 +41,34 @@ export const metadata: Metadata = {
     description:
       "Menaungi Badan Pusat Reklasseering Republik Indonesia (BPR-RI). Portal informasi publik.",
   },
+  keywords: [
+    "BPR-RI",
+    "Badan Pusat Reklasseering",
+    "Reklasseering Republik Indonesia",
+    "DPD Tk.I DKI Jakarta",
+    "bantuan hukum",
+    "reklasering",
+    "pidana bersyarat",
+    "lepas bersyarat",
+    "informasi publik",
+  ],
+  authors: [{ name: "Badan Pusat Reklasseering Republik Indonesia" }],
+  publisher: "Badan Pusat Reklasseering Republik Indonesia",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  formatDetection: { email: false, address: false, telephone: false },
+  verification: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION
+    ? { google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION }
+    : undefined,
 };
 
 export default function RootLayout({
@@ -51,7 +81,11 @@ export default function RootLayout({
       lang="id"
       className={`${geistSans.variable} ${geistMono.variable} ${lora.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <JsonLd data={organizationSchema()} />
+        <JsonLd data={websiteSchema()} />
+        {children}
+      </body>
     </html>
   );
 }
