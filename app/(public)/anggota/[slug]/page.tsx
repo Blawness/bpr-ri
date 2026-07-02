@@ -5,6 +5,9 @@ import { cacheTag } from "next/cache";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
+import { Metadata } from "next";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { personSchema, breadcrumbSchema } from "@/lib/seo/schema";
 
 
 async function getMemberBySlug(slug: string) {
@@ -20,15 +23,30 @@ export async function generateStaticParams() {
   return allMembers.map((m) => ({ slug: m.slug }));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const member = await getMemberBySlug(slug);
 
-  if (!member) return { title: "Not Found" };
+  if (!member) return { title: "Tidak Ditemukan" };
 
+  const description = `Profil ${member.name} — ${member.position} di BPR-RI`;
   return {
     title: member.name,
-    description: `Profil ${member.name} - ${member.position} di BPR-RI`,
+    description,
+    alternates: { canonical: `/anggota/${member.slug}` },
+    openGraph: {
+      type: "profile",
+      title: member.name,
+      description,
+      url: `/anggota/${member.slug}`,
+      images: member.photoUrl ? [member.photoUrl] : undefined,
+    },
+    twitter: {
+      card: "summary",
+      title: member.name,
+      description,
+      images: member.photoUrl ? [member.photoUrl] : undefined,
+    },
   };
 }
 
@@ -42,6 +60,18 @@ export default async function MemberProfilePage({ params }: { params: Promise<{ 
 
   return (
     <section className="py-16 lg:py-20 bg-neutral-50 min-h-screen">
+      <JsonLd data={personSchema({
+        name: member.name,
+        slug: member.slug,
+        position: member.position,
+        photoUrl: member.photoUrl,
+        bio: member.bio,
+      })} />
+      <JsonLd data={breadcrumbSchema([
+        { name: "Beranda", path: "/" },
+        { name: "Anggota", path: "/anggota" },
+        { name: member.name, path: `/anggota/${member.slug}` },
+      ])} />
       <div className="container mx-auto px-4">
         <Link
           href="/anggota"
