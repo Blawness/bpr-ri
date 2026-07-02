@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const member = await getMemberBySlug(slug);
 
-  if (!member) return { title: "Tidak Ditemukan" };
+  if (!member) return { title: "Tidak Ditemukan", robots: { index: false, follow: false } };
 
   const description = `Profil ${member.name} — ${member.position} di BPR-RI`;
   return {

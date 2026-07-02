@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = await getPublishedArticleBySlug(slug);
 
   if (!post) {
-    return { title: "Berita Tidak Ditemukan" };
+    return { title: "Berita Tidak Ditemukan", robots: { index: false, follow: false } };
   }
 
   const title = post.metaTitle || post.title;
