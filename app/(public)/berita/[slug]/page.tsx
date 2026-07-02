@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { Metadata } from "next";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { newsArticleSchema, breadcrumbSchema } from "@/lib/seo/schema";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -17,18 +19,36 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const post = await getPublishedArticleBySlug(slug);
-  
+
   if (!post) {
     return { title: "Berita Tidak Ditemukan" };
   }
-  
+
+  const title = post.metaTitle || post.title;
+  const description = post.metaDescription || post.excerpt || post.title;
+  const image = post.ogImage || post.coverImageUrl || undefined;
+
   return {
-    title: post.title,
-    description: post.excerpt || post.title,
+    title,
+    description,
+    alternates: { canonical: `/berita/${post.slug}` },
     openGraph: {
-      title: post.title,
-      description: post.excerpt || post.title,
-      images: post.coverImageUrl ? [post.coverImageUrl] : [],
+      type: "article",
+      title,
+      description,
+      url: `/berita/${post.slug}`,
+      publishedTime: post.publishedAt?.toISOString(),
+      modifiedTime: (post.updatedAt ?? post.publishedAt)?.toISOString(),
+      authors: post.authorName ? [post.authorName] : undefined,
+      section: post.categoryName ?? undefined,
+      tags: post.tags?.map((t) => t.name),
+      images: image ? [image] : undefined,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: image ? [image] : undefined,
     },
   };
 }
@@ -43,6 +63,21 @@ export default async function ArticlePage({ params }: Props) {
 
   return (
     <article className="min-h-screen bg-white">
+      <JsonLd data={newsArticleSchema({
+        title: post.title,
+        slug: post.slug,
+        description: post.metaDescription || post.excerpt,
+        image: post.ogImage || post.coverImageUrl,
+        publishedAt: post.publishedAt,
+        updatedAt: post.updatedAt,
+        authorName: post.authorName,
+        categoryName: post.categoryName,
+      })} />
+      <JsonLd data={breadcrumbSchema([
+        { name: "Beranda", path: "/" },
+        { name: "Berita", path: "/berita" },
+        { name: post.title, path: `/berita/${post.slug}` },
+      ])} />
       {/* Hero Section */}
       <div className="relative bg-navy-900 py-20 lg:py-32 overflow-hidden">
         <div className="absolute inset-0 opacity-10">
