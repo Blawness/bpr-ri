@@ -42,14 +42,6 @@ export function websiteSchema() {
     name: ORG.name,
     inLanguage: "id-ID",
     publisher: { "@id": ORG_ID },
-    potentialAction: {
-      "@type": "SearchAction",
-      target: {
-        "@type": "EntryPoint",
-        urlTemplate: `${siteUrl}/berita?q={search_term_string}`,
-      },
-      "query-input": "required name=search_term_string",
-    },
   };
 }
 
@@ -79,9 +71,9 @@ export function newsArticleSchema(a: ArticleSchemaInput) {
       ? { dateModified: (a.updatedAt ?? a.publishedAt!)!.toISOString() }
       : {}),
     ...(a.categoryName ? { articleSection: a.categoryName } : {}),
-    ...(a.authorName
-      ? { author: { "@type": "Person", name: a.authorName } }
-      : {}),
+    author: a.authorName
+      ? { "@type": "Person", name: a.authorName }
+      : { "@id": ORG_ID },
     publisher: { "@id": ORG_ID },
     inLanguage: "id-ID",
   };

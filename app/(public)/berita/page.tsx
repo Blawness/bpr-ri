@@ -5,6 +5,8 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { breadcrumbSchema } from "@/lib/seo/schema";
 
 export const metadata = {
+  title: "Berita",
+  description: "Berita, artikel, dan kegiatan terbaru Badan Pusat Reklasseering Republik Indonesia (BPR-RI).",
   alternates: { canonical: "/berita" },
 };
 

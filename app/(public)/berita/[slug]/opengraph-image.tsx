@@ -37,7 +37,6 @@ export default async function ArticleOgImage({
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: "24px" }}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={logoSrc} width={72} height={72} alt="" />
           <span
             style={{
